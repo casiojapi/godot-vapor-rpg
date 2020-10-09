@@ -165,10 +165,10 @@ max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id=21]
-animation = "run_up"
+animation = "run_down"
 
 [sub_resource type="AnimationNodeAnimation" id=22]
-animation = "run_down"
+animation = "run_up"
 
 [sub_resource type="AnimationNodeAnimation" id=23]
 animation = "run_right"
