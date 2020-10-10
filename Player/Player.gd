@@ -19,7 +19,7 @@ const MAX_SPEED = 200
 func _ready():
 		animation_tree.active = true;
 
-func _process(delta):	#_physics_process if im using physics (position)
+func _physics_process(delta):	#_physics_process if im using physics (position)
 	match state:
 		MOVE:
 			move_state(delta)
