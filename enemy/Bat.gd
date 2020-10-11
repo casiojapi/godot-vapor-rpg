@@ -6,6 +6,7 @@ onready var stats = $Stats
 onready var player_detection_zone = $PlayerDetectionZone
 onready var sprite = $AnimatedSprite
 
+
 enum {
 	IDLE,
 	WANDER,
@@ -23,10 +24,6 @@ var velocity = Vector2.ZERO
 var knockback = Vector2.ZERO	
 var state = IDLE
 
-
-func _ready():
-	print(stats.max_health)
-	print(stats.health)
 
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, 200 * delta)
@@ -55,7 +52,6 @@ func seek_player():
 	
 func _on_Hurtbox_area_entered(area):
 	stats.health -= area.damage
-	print(stats.health)
 	knockback = area.knockback_vector * KNOCK
 	
 func _on_Stats_no_health():
