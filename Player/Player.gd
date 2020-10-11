@@ -13,13 +13,16 @@ var roll_vector = Vector2.DOWN
 onready var animation_player = $AnimationPlayer
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
-const ACCELERATION = 1300
-const FRICTION = 2000
-const MAX_SPEED = 200
-const ROLL_SPEED = 1.5
+onready var sword_hitbox = $HitboxPivot/SwordHitbox
+
+export var ACCELERATION = 1300
+export var FRICTION = 2000
+export var MAX_SPEED = 130
+export var ROLL_SPEED = 1.5
 
 func _ready():
 		animation_tree.active = true;
+		sword_hitbox.knockback_vector = roll_vector
 
 func _physics_process(delta):	#_physics_process if im using physics (position)
 	match state:
@@ -28,6 +31,7 @@ func _physics_process(delta):	#_physics_process if im using physics (position)
 		ROLL:
 			roll_state(delta)
 		ATTACK:
+		#	move_state(delta)
 			attack_state(delta)
 
 
@@ -39,6 +43,7 @@ func move_state(delta):
 	
 	if input_vector != Vector2.ZERO:
 		roll_vector = input_vector
+		sword_hitbox.knockback_vector = input_vector
 		animation_tree.set("parameters/Idle/blend_position", input_vector)
 		animation_tree.set("parameters/Run/blend_position", input_vector)
 		animation_tree.set("parameters/Attack/blend_position", input_vector)
@@ -66,8 +71,15 @@ func roll_state(delta):
 	move()
 
 func attack_state(delta):
+	#var input_vector = Vector2.ZERO
+	#input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	#input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	#input_vector = input_vector.normalized()
+	
+	#velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	velocity = Vector2.ZERO
 	animation_state.travel("Attack")
+	#velocity = move_and_slide(velocity)
 	
 func move():
 	velocity = move_and_slide(velocity)
