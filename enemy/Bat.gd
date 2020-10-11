@@ -1,4 +1,5 @@
 extends KinematicBody2D
+const EnemyDeathEffect = preload("res://Effects/EnemyDeathEffect.tscn")
 
 const KNOCK = 115
 var knockback = Vector2.ZERO	
@@ -21,3 +22,6 @@ func _on_Hurtbox_area_entered(area):
 	
 func _on_Stats_no_health():
 	queue_free()
+	var enemy_death_effect = EnemyDeathEffect.instance()
+	get_parent().add_child(enemy_death_effect)
+	enemy_death_effect.global_position = global_position
