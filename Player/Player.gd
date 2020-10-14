@@ -9,11 +9,13 @@ enum {
 var state = MOVE
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
+var stats = PlayerStats
 
 onready var animation_player = $AnimationPlayer
 onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
 onready var sword_hitbox = $HitboxPivot/SwordHitbox
+onready var hurtbox = $Hurtbox
 
 export var ACCELERATION = 1300
 export var FRICTION = 2000
@@ -21,8 +23,9 @@ export var MAX_SPEED = 130
 export var ROLL_SPEED = 1.5
 
 func _ready():
-		animation_tree.active = true;
-		sword_hitbox.knockback_vector = roll_vector
+	stats.connect("no_health", self, "queue_free")
+	animation_tree.active = true;
+	sword_hitbox.knockback_vector = roll_vector
 
 func _physics_process(delta):	#_physics_process if im using physics (position)
 	match state:
@@ -81,3 +84,11 @@ func attack_animation_finished():
 	
 func roll_animation_finished():
 	state = MOVE
+
+
+func _on_Hurtbox_area_entered(area):
+	if hurtbox.inv == false:
+		stats.health -= .5
+		hurtbox.start_inv(1)
+		hurtbox.create_hit_effect()
+	
