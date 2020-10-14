@@ -88,7 +88,7 @@ func roll_animation_finished():
 
 func _on_Hurtbox_area_entered(area):
 	if hurtbox.inv == false:
-		stats.health -= .5
+		stats.health -= 1
 		hurtbox.start_inv(1)
 		hurtbox.create_hit_effect()
 	
