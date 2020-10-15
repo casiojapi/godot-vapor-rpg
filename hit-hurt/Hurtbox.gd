@@ -1,6 +1,7 @@
 extends Area2D
 
 onready var timer = $Timer
+onready var collision_shape = $CollisionShape2D
 const HitEffect = preload("res://Effects/HitEffect.tscn")
 
 var inv = false setget set_inv
@@ -29,7 +30,7 @@ func _on_Timer_timeout():
 	self.inv = false
 
 func _on_Hurtbox_inv_started():
-	set_deferred("monitorable", false)
+	collision_shape.set_deferred("disabled", false)
 
 func _on_Hurtbox_inv_ended():
 	monitorable = true
