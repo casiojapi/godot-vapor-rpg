@@ -17,6 +17,7 @@ onready var animation_state = animation_tree.get("parameters/playback")
 onready var sword_hitbox = $HitboxPivot/SwordHitbox
 onready var hurtbox = $Hurtbox
 
+const PlayerHurtSound = preload("res://Effects/PlayerHurtSound.tscn")
 export var ACCELERATION = 1300
 export var FRICTION = 2000
 export var MAX_SPEED = 130
@@ -92,4 +93,6 @@ func _on_Hurtbox_area_entered(area):
 		stats.health -= 1
 		hurtbox.start_inv(1)
 		hurtbox.create_hit_effect()
+		var player_hurt_sound = PlayerHurtSound.instance()
+		get_tree().current_scene.add_child(player_hurt_sound)
 	

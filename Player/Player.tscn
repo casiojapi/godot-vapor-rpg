@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Action RPG/Player/Player.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://hit-hurt/Hurtbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Action RPG/Shadows/MediumShadow.png" type="Texture" id=6]
 [ext_resource path="res://Action RPG/Music and Sounds/Swipe.wav" type="AudioStream" id=7]
+[ext_resource path="res://Action RPG/Music and Sounds/Evade.wav" type="AudioStream" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.67881
@@ -373,6 +374,20 @@ tracks/1/keys = {
 "method": "roll_animation_finished"
 } ]
 }
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0.1 )
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "roll_left"
@@ -402,6 +417,20 @@ tracks/1/keys = {
 "args": [  ],
 "method": "roll_animation_finished"
 } ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0.1 )
 }
 
 [sub_resource type="Animation" id=12]
@@ -433,6 +462,20 @@ tracks/1/keys = {
 "method": "roll_animation_finished"
 } ]
 }
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0.1 )
+}
 
 [sub_resource type="Animation" id=13]
 resource_name = "roll_up"
@@ -462,6 +505,20 @@ tracks/1/keys = {
 "args": [  ],
 "method": "roll_animation_finished"
 } ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0.1 )
 }
 
 [sub_resource type="Animation" id=14]
@@ -671,7 +728,7 @@ texture = ExtResource( 6 )
 position = Vector2( 0, -10 )
 texture = ExtResource( 2 )
 hframes = 60
-frame = 18
+frame = 46
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -0.741 )
