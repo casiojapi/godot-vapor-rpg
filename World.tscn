@@ -504,13 +504,13 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [node name="World" type="Node2D"]
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -168, -32 )
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( -420.841, -156.238 )
 z_index = -5
 texture = ExtResource( 3 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0.254, 600, 300 )
+region_rect = Rect2( -528, -320, 1280, 544 )
 region_filter_clip = true
 
 [node name="DirtPathTilemap" type="TileMap" parent="."]
@@ -532,6 +532,9 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 1, -65534, 0, 2, -6
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 176, 64 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+remote_path = NodePath("../../../Camera2D")
 
 [node name="Bushes" type="YSort" parent="YSort"]
 
@@ -604,8 +607,15 @@ position = Vector2( 216, 96 )
 [node name="Bat2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 96, 80 )
 
-[node name="HealthUI" parent="." instance=ExtResource( 8 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 8 )]
 margin_left = 4.00452
 margin_top = 3.08682
 margin_right = 68.0045
 margin_bottom = 19.0868
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 176, 64 )
+current = true
+smoothing_enabled = true
