@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Action RPG/Player/Player.png" type="Texture" id=2]
@@ -8,6 +8,11 @@
 [ext_resource path="res://Action RPG/Shadows/MediumShadow.png" type="Texture" id=6]
 [ext_resource path="res://Action RPG/Music and Sounds/Swipe.wav" type="AudioStream" id=7]
 [ext_resource path="res://Action RPG/Music and Sounds/Evade.wav" type="AudioStream" id=8]
+[ext_resource path="res://WhiteColor.shader" type="Shader" id=9]
+
+[sub_resource type="ShaderMaterial" id=48]
+shader = ExtResource( 9 )
+shader_param/active = false
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.67881
@@ -714,6 +719,38 @@ height = 12.0
 radius = 6.08462
 height = 5.54681
 
+[sub_resource type="Animation" id=49]
+resource_name = "Start"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=50]
+resource_name = "Stop"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 2147483649
@@ -725,10 +762,11 @@ scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 48 )
 position = Vector2( 0, -10 )
 texture = ExtResource( 2 )
 hframes = 60
-frame = 46
+frame = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -0.741 )
@@ -785,7 +823,13 @@ shape = SubResource( 47 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+
+[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Start = SubResource( 49 )
+anims/Stop = SubResource( 50 )
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="inv_ended" from="Hurtbox" to="." method="_on_Hurtbox_inv_ended"]
+[connection signal="inv_started" from="Hurtbox" to="." method="_on_Hurtbox_inv_started"]
 
 [editable path="HitboxPivot/SwordHitbox"]
 

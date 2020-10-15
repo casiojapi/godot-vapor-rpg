@@ -16,6 +16,7 @@ onready var animation_tree = $AnimationTree
 onready var animation_state = animation_tree.get("parameters/playback")
 onready var sword_hitbox = $HitboxPivot/SwordHitbox
 onready var hurtbox = $Hurtbox
+onready var blink_animation_player = $BlinkAnimationPlayer
 
 const PlayerHurtSound = preload("res://Effects/PlayerHurtSound.tscn")
 export var ACCELERATION = 1300
@@ -90,9 +91,14 @@ func roll_animation_finished():
 
 func _on_Hurtbox_area_entered(area):
 	if hurtbox.inv == false:
-		stats.health -= 1
+		stats.health -= area.damage
 		hurtbox.start_inv(1)
 		hurtbox.create_hit_effect()
 		var player_hurt_sound = PlayerHurtSound.instance()
 		get_tree().current_scene.add_child(player_hurt_sound)
-	
+
+func _on_Hurtbox_inv_started():
+	blink_animation_player.play("Start")
+
+func _on_Hurtbox_inv_ended():
+	blink_animation_player.play("Stop")

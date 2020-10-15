@@ -8,7 +8,7 @@ onready var sprite = $AnimatedSprite
 onready var hurtbox = $Hurtbox
 onready var soft_collision = $SoftCollision
 onready var wander_controller = $WanderController
-
+onready var animation_player = $AnimationPlayer
 
 enum {
 	IDLE,
@@ -82,9 +82,16 @@ func _on_Hurtbox_area_entered(area):
 	stats.health -= area.damage
 	knockback = area.knockback_vector * KNOCK
 	hurtbox.create_hit_effect()
+	hurtbox.start_inv(0.2)
 	
 func _on_Stats_no_health():
 	queue_free()
 	var enemy_death_effect = EnemyDeathEffect.instance()
 	get_parent().add_child(enemy_death_effect)
 	enemy_death_effect.global_position = global_position
+
+func _on_Hurtbox_inv_ended():
+	animation_player.play("Start")
+	
+func _on_Hurtbox_inv_started():
+	animation_player.play("Stop")
