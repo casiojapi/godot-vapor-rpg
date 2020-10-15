@@ -23,6 +23,7 @@ export var MAX_SPEED = 130
 export var ROLL_SPEED = 1.5
 
 func _ready():
+	randomize()
 	stats.connect("no_health", self, "queue_free")
 	animation_tree.active = true;
 	sword_hitbox.knockback_vector = roll_vector
