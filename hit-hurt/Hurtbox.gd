@@ -2,7 +2,7 @@ extends Area2D
 
 onready var timer = $Timer
 onready var collision_shape = $CollisionShape2D
-const HitEffect = preload("res://Effects/HitEffect.tscn")
+const HitEffect = preload("res://effects/HitEffect.tscn")
 
 var inv = false setget set_inv
 

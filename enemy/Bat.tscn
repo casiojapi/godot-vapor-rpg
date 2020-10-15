@@ -1,15 +1,22 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://Action RPG/Enemies/Bat.png" type="Texture" id=1]
-[ext_resource path="res://Action RPG/Shadows/SmallShadow.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Enemies/Bat.png" type="Texture" id=1]
+[ext_resource path="res://sprites/Shadows/SmallShadow.png" type="Texture" id=2]
 [ext_resource path="res://enemy/Bat.gd" type="Script" id=3]
 [ext_resource path="res://hit-hurt/Hurtbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Stats.tscn" type="PackedScene" id=5]
+[ext_resource path="res://stats/Stats.tscn" type="PackedScene" id=5]
 [ext_resource path="res://enemy/PlayerDetectionZone.tscn" type="PackedScene" id=6]
 [ext_resource path="res://hit-hurt/Hitbox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://hit-hurt/SoftCollision.tscn" type="PackedScene" id=8]
 [ext_resource path="res://enemy/WanderController.tscn" type="PackedScene" id=9]
-[ext_resource path="res://WhiteColor.shader" type="Shader" id=10]
+[ext_resource path="res://shaders/WhiteColor.shader" type="Shader" id=10]
+
+
+
+
+
+
+
 
 [sub_resource type="ShaderMaterial" id=12]
 resource_local_to_scene = true

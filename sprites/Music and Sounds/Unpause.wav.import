@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Unpause.wav-cfa69c67177ba2ff45c2319a1199e879.sample"
+
+[deps]
+
+source_file="res://sprites/Music and Sounds/Unpause.wav"
+dest_files=[ "res://.import/Unpause.wav-cfa69c67177ba2ff45c2319a1199e879.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

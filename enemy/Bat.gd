@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-const EnemyDeathEffect = preload("res://Effects/EnemyDeathEffect.tscn")
+const EnemyDeathEffect = preload("res://effects/EnemyDeathEffect.tscn")
 onready var stats = $Stats
 onready var player_detection_zone = $PlayerDetectionZone
 onready var sprite = $AnimatedSprite

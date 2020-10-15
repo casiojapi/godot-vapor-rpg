@@ -16,12 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="vaporzero"
-run/main_scene="res://World.tscn"
+run/main_scene="res://world/World.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-PlayerStats="*res://Player/PlayerStats.tscn"
+PlayerStats="*res://player/PlayerStats.tscn"
 
 [display]
 
