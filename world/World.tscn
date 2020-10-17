@@ -2,7 +2,7 @@
 
 [ext_resource path="res://world/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://sprites/World/GrassBackground.png" type="Texture" id=3]
+[ext_resource path="res://sprites/World/floor.png" type="Texture" id=3]
 [ext_resource path="res://sprites/World/DirtTileset.png" type="Texture" id=4]
 [ext_resource path="res://sprites/World/CliffTileset.png" type="Texture" id=5]
 [ext_resource path="res://world/Grass.tscn" type="PackedScene" id=6]
@@ -506,12 +506,11 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [node name="World" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( -424, -152 )
+position = Vector2( 128, 104 )
 z_index = -5
 texture = ExtResource( 3 )
-centered = false
 region_enabled = true
-region_rect = Rect2( -528, -320, 1280, 544 )
+region_rect = Rect2( -16, -16, 672, 400 )
 region_filter_clip = true
 
 [node name="DirtPathTilemap" type="TileMap" parent="."]
